@@ -9,9 +9,9 @@ def dates():
     t = '''
 Usage_examples (make sure that the input parameters are within quotes):
 
-  Default Parameters: py_heideltime -t "August 31st" -l "English"
+  Default Parameters: py_rule_based -t "2011 Haiti Earthquake Anniversary." 
     
-  All the Parameters: py_heideltime -t "August 31st" -l "English" -dg "day" -dt "News" -dct "1939-08-31"
+  All the Parameters: py_rule_based -t "2011 Haiti Earthquake Anniversary." -dg "year" -bd "2000" -ed "2015"
     
   Output: the output will be a list of temporal expressions (TE) in the format [(normalized TE; TE as it is found in the text),….] or an empty list [] if no temporal expression is found in the text.
 
