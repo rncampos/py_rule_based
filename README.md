@@ -70,7 +70,7 @@ TextNormalized = results[1]
 TextNormalized
 ````
 ```` bash
-'The start of the war in Europe is generally held to be 1 September <d>1939</d>,beginning with the German invasion of Poland; the United Kingdom and France declared war on Germany two days later.The dates for the beginning of war in the Pacific include the start of the Second Sino-Japanese War on 7 July <d>1937</d>,or even the Japanese invasion of Manchuria on 19 September <d>1931</d>.'
+'The start of the war in Europe is generally held to be 1 September <d>1939</d>,beginning with the German invasion of Poland; the United Kingdom and France declared war on Germany two days later.The dates for the beginning of war in the Pacific include the start of the Second Sino-Japanese War on 7 July <d>1937</d>,or even the Japanese invasion of Manchuria on <d>19-09-1931</d>.'
 ````
 
 ```` bash
