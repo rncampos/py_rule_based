@@ -16,16 +16,16 @@ Usage_examples (make sure that the input parameters are within quotes):
   Output: the output will be a list of temporal expressions (TE) in the format [(normalized TE; TE as it is found in the text),….] or an empty list [] if no temporal expression is found in the text.
 
 Options:
-  [partilally-required]: either specify a text or an input_file path.
+  [required]: either specify a text or an input_file path.
   ----------------------------------------------------------------------------------------------------------------------------------
   -t, --text TEXT                       Input text.
-                                        Example: “August 31st”.
+                                        Example: “2011 Haiti Earthquake Anniversary.”.
 
   -i, --input_file TEXT                 Text path.
                                         Example: “C:\\text.txt
 
 
-  [required]
+  [not required]
   -----------------------------------------------------------------------------------------------------------------------------------
   -dg, --date_granularity TEXT          Date granularity
                                         Default: "full"

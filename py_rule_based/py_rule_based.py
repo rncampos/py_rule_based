@@ -38,10 +38,8 @@ def date_extraction(text, date_granularity, begin_date, end_date):
                     pass
                 else:
                     provisional_list = []
-                    text_tokens[tk] = text_tokens[tk].replace(dt[0], '<d>' + dt[0] + '</d>')
 
-                    label_text_exec_time = (time.time() - labeling_start_time)
-                    exec_time_text_labeling += label_text_exec_time
+
 
                     if dt[0] not in date_dictionary:
                         date_dictionary[dt[0]] = [dt[0]]
@@ -50,7 +48,7 @@ def date_extraction(text, date_granularity, begin_date, end_date):
 
                     if dt[0] not in dates_list and date_granularity == 'full':
                         dates_list.append(dt[0])
-
+                        text_tokens[tk] = text_tokens[tk].replace(dt[0], '<d>' + dt[0] + '</d>')
                         TempExpressions.append((dt[0], dt[0]))
                     elif dt[0] not in dates_list and date_granularity != 'full':
                         try:
@@ -69,10 +67,17 @@ def date_extraction(text, date_granularity, begin_date, end_date):
                                 dt, dates_list, provisional_list, \
                                 date_dictionary, striped_text = date_granularity_format(dt, dates_list, provisional_list, date_dictionary,'\d{2,4}[-/.]\d{2}[-/.]\d{2,4}', tk, TempExpressions)
 
+                            labeling_start_time = time.time()
                             text_tokens[tk] = text_tokens[tk].replace(dt[0], '<d>'+provisional_list[0][1]+'</d>')
+                            label_text_exec_time = (time.time() - labeling_start_time)
+                            exec_time_text_labeling += label_text_exec_time
                         except:
                             pass
-
+                    else:
+                        labeling_start_time = time.time()
+                        text_tokens[tk] = text_tokens[tk].replace(dt[0], '<d>' + dt[0] + '</d>')
+                        label_text_exec_time = (time.time() - labeling_start_time)
+                        exec_time_text_labeling += label_text_exec_time
 
         tt_exec_time = (time.time() - extractor_start_time)
         ExecTimeDictionary['rule_based_processing'] = tt_exec_time - exec_time_text_labeling
@@ -81,7 +86,7 @@ def date_extraction(text, date_granularity, begin_date, end_date):
         pass
 
     new_text = ' '.join(text_tokens)
-    return dates_list, new_text, date_dictionary, TempExpressions, ExecTimeDictionary
+    return [TempExpressions, new_text, ExecTimeDictionary]
 
 
 def date_granularity_format(dt, dates_list, provisional_list, date_dictionary, granularity_rule, text, TempExpressions):
