@@ -24,7 +24,6 @@ def date_extraction(text, date_granularity, begin_date, end_date):
     extractor_start_time = time.time()
     try:
         for tk in range(len(text_tokens)):
-            labeling_start_time = time.time()
             if c.match(text_tokens[tk]):
 
                 dt = c.findall(text_tokens[tk])
@@ -39,18 +38,16 @@ def date_extraction(text, date_granularity, begin_date, end_date):
                 else:
                     provisional_list = []
 
-
-
                     if dt[0] not in date_dictionary:
                         date_dictionary[dt[0]] = [dt[0]]
                     else:
                         date_dictionary[dt[0]].append(dt[0])
 
-                    if dt[0] not in dates_list and date_granularity == 'full':
+                    if date_granularity == 'full':
                         dates_list.append(dt[0])
                         text_tokens[tk] = text_tokens[tk].replace(dt[0], '<d>' + dt[0] + '</d>')
                         TempExpressions.append((dt[0], dt[0]))
-                    elif dt[0] not in dates_list and date_granularity != 'full':
+                    elif date_granularity != 'full':
                         try:
                             if date_granularity.lower() == 'year':
 
