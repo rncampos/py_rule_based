@@ -122,7 +122,7 @@ ExecutionTime
 ### Python CLI (Command Line Interface)
 #### Help
 ``` bash
-py_heideltime --help
+py_rule_based --help
 ```
 #### Usage Examples
 Make sure that the input parameters are within quotes.
