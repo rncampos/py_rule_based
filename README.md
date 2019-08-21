@@ -11,14 +11,13 @@ py_rule_based is a python wrapper that use a self-defined rule-based approach in
 
 This wrapper has been developed by Jorge Mendes under the supervision of [Professor Ricardo Campos](http://www.ccc.ipt.pt/~ricardo/) in the scope of the Final Project of the Computer Science degree at the [Polytechnic Institute of Tomar](http://portal2.ipt.pt/), Portugal.
 
-Our aim for this package was six-fold:
+Our aim for this package was five-fold:
 
  - To provide a multi-platform (windows, Linux, Mac Os);
  - To make it user-friendly not only in terms of installation but also in its usage;
  - To make it lightweight without compromising its behavior;
  - To give the user the chance to choose the granularity (e.g., year, month, etc) of the dates to be extracted;
  - To give the user the chance to choose the range of begin_date and end_date (e.g., begin_date=0, end_date=2100, etc);
- - To retrieve to the user a normalized version of the text (where each temporal expression is replaced by the normalized Heideltime version); and
 
 ## How to install py_rule_based
 
