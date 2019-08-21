@@ -45,7 +45,7 @@ results = py_rule_based(text)
 or:
 
 ```` bash
-results = py_rule_based(text, date_granularity='full', begin_date=2000, end_date=2100)
+results = py_rule_based(text, date_granularity='full', begin_date=1930, end_date=1940)
 ````
 is exactly the same thing and produces the same results.
 
@@ -87,7 +87,7 @@ Besides running py_rule_based with the default parameters, users can also specif
 - `end_date` <b>2100</b> (Defines the maximum value of date to be considered)
 
 ```` bash
-result = py_rule_based(text, date_granularity='year', begin_date=0, end_date=2100)
+result = py_rule_based(text, date_granularity='year', begin_date=0, end_date=1940)
 ````
 
 ###### Output
