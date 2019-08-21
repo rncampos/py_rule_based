@@ -11,14 +11,6 @@ py_rule_based is a python wrapper that use a self-defined rule-based approach in
 
 This wrapper has been developed by Jorge Mendes under the supervision of [Professor Ricardo Campos](http://www.ccc.ipt.pt/~ricardo/) in the scope of the Final Project of the Computer Science degree at the [Polytechnic Institute of Tomar](http://portal2.ipt.pt/), Portugal.
 
-Our aim for this package was five-fold:
-
- - To provide a multi-platform (windows, Linux, Mac Os);
- - To make it user-friendly not only in terms of installation but also in its usage;
- - To make it lightweight without compromising its behavior;
- - To give the user the chance to choose the granularity (e.g., year, month, etc) of the dates to be extracted;
- - To give the user the chance to choose the range of begin_date and end_date (e.g., begin_date=0, end_date=2100, etc);
-
 ## How to install py_rule_based
 
 ```bash
@@ -36,7 +28,7 @@ text = "The start of the war in Europe is generally held to be 1 September 1939,
 ```
 
 #### _With the default parameters_
-Default date_granularity is "full", begin_date is 0 and end_date is 2100 which means the range of dates that will be considered:
+Default date_granularity is "full" (highest possible granularity detected will be retrieved), begin_date is 0 and end_date is 2100 which means that all the dates within this range will be retrieved. The following code shows two different ways of obtaining the results:
 
 ```` bash
 results = py_rule_based(text)
@@ -45,16 +37,16 @@ results = py_rule_based(text)
 or:
 
 ```` bash
-results = py_rule_based(text, date_granularity='full', begin_date=1930, end_date=1940)
+results = py_rule_based(text, date_granularity='full', begin_date=2000, end_date=2100)
 ````
 is exactly the same thing and produces the same results.
 
 ###### Output
-The output will be a list of 3 elements or an empty list [] if no temporal expression is found in the text. The four elements are:
+The output will be a list of 3 elements or an empty list [] if no temporal expression is found in the text. The three elements are:
 
-- a list of tuples with two positions (e.g., ('2011-01-02', '2011-01-02')). The first one is the detected temporal expression normalized by heideltime. The second is the temporal expression as it was found in the text;
-- a normalized version of the text, where each temporal expression is replaced by its original date format;
-- the execution time of the algorithm, divided into `rule_based_processing` (i.e., the time spent by the rule_based algorithm in extracting temporal expressions) and `text_normalization` (the time spent by the program in labelling the temporal expressions found in the text with a tag <d>).
+- a list of tuples with two positions (e.g., ('2011-01-02', '2011-01-02')). The first one is the detected temporal expression normalized by py_rule_based model. The second is the temporal expression as it was found in the text; The first may differ from the second when the date_granularity is different than full.
+- a normalized version of the text, where each temporal expression is tagged with <d>;
+- the execution time of the algorithm, divided into `rule_based_processing` (i.e., the time spent by the rule_based model in extracting temporal expressions) and `text_normalization` (the time spent by the program in labelling the temporal expressions found in the text with a tag <d>).
 
 ```` bash
 TempExpressions = results[0]
@@ -82,12 +74,12 @@ ExecutionTime
 
 #### _Optional parameters_
 Besides running py_rule_based with the default parameters, users can also specify more advanced options. These are:
-- `date granularity`: <b>"full"</b> (Highest possible granularity detected will be retrieved); <b>"year"</b> (YYYY will be retrieved); <b>"month"</b> (YYYY-MM will be retrieved); <b>"day"</b> (YYYY-MM-DD will be retrieved)
-- `begin_date` <b>0</b> (Defines the minimum value of date to be considered)
+- `date granularity`: <b>"full"</b> (highest possible granularity detected will be retrieved); <b>"year"</b> (YYYY will be retrieved); <b>"month"</b> (YYYY-MM will be retrieved); <b>"day"</b> (YYYY-MM-DD will be retrieved)
+- `begin_date` <b>0</b> (defines the minimum value of date to be considered)
 - `end_date` <b>2100</b> (Defines the maximum value of date to be considered)
 
 ```` bash
-result = py_rule_based(text, date_granularity='year', begin_date=0, end_date=1940)
+result = py_rule_based(text, date_granularity='year', begin_date=0, end_date=2100)
 ````
 
 ###### Output
